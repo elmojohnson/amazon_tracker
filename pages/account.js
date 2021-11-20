@@ -1,4 +1,5 @@
 import { useUser } from "@auth0/nextjs-auth0";
+import Link from "next/link";
 
 export default function Account() {
   const { user, isLoading } = useUser();
@@ -16,7 +17,9 @@ export default function Account() {
           />
           <p className="lh-1 mt-4 fs-3">{user.name}</p>
           <p>{user.email}</p>
-          <a href="/api/auth/login" className="btn btn-sm btn-outline-dark w-25">Logout</a>
+          <Link href="/api/auth/login">
+            <a className="btn btn-sm btn-outline-dark w-25">Logout</a>
+          </Link>
         </div>
       )}
     </div>
