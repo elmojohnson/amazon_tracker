@@ -1,7 +1,13 @@
 const cheerio = require("cheerio");
 const request = require("request");
 import { app } from "../../firebase/firebase";
-import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 
 export default function handler(req, res) {
   const db = getFirestore(app);
@@ -21,7 +27,18 @@ export default function handler(req, res) {
           .find(".a-offscreen")
           .text();
 
-        checkItem(res, db, title, img, rrp, price, url, email);
+        if (email) {
+          checkItem(res, db, title, img, rrp, price, url, email);
+        } else {
+          res.status(200).json({
+            title: title,
+            img: img,
+            rrp: rrp,
+            price: price,
+            url: url,
+            saved: false,
+          });
+        }
       }
     });
   }
@@ -49,6 +66,6 @@ const checkItem = async (res, db, title, img, rrp, price, url, email) => {
     rrp: rrp,
     price: price,
     url: url,
-    saved: count === 0 ? false : true
+    saved: count === 0 ? false : true,
   });
 };

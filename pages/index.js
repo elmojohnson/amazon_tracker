@@ -37,7 +37,7 @@ export default function Home() {
       axios
         .post("./api/tracker", {
           url: url,
-          email: user.email,
+          email: user ? user.email : null,
         })
         .then((res) => {
           setItem({
