@@ -4,7 +4,7 @@ import axios from "axios";
 import Item from "../components/Item";
 import ItemsLoader from "../components/ItemsLoader";
 
-export default function saved() {
+export default function Saved() {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
 

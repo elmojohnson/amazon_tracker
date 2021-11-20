@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navi from "./Navi";
+import Script from 'next/script'
 
 export default function Layout({ children }) {
   return (
@@ -14,7 +15,7 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></Script>
       </Head>
 
       <Navi />

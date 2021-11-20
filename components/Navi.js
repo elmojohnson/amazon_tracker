@@ -1,6 +1,7 @@
 import { useUser } from "@auth0/nextjs-auth0";
 import Head from "next/head";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Navi() {
   const { user } = useUser();
@@ -12,10 +13,12 @@ export default function Navi() {
       </Head>
       <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div className="container">
-          <a className="navbar-brand" href="/">
-            <img src="./amazon.png" width="30" className="me-2" />
-            Price Tracker
-          </a>
+          <Link href="/">
+            <a className="navbar-brand">
+              <img src="./amazon.png" width="30" className="me-2" />
+              Price Tracker
+            </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,13 +32,13 @@ export default function Navi() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
-              <a className="nav-link" href="/">
-                Home
-              </a>
+              <Link href="/">
+                <a className="nav-link">Home</a>
+              </Link>
               {user && (
-                <a className="nav-link" href="/saved">
-                  Saved
-                </a>
+                <Link href="/saved">
+                  <a className="nav-link">Saved</a>
+                </Link>
               )}
               {user && (
                 <div className="nav-item dropdown">
@@ -54,25 +57,22 @@ export default function Navi() {
                     aria-labelledby="navbarScrollingDropdown"
                   >
                     <li>
-                      <a className="dropdown-item" href="/account">
-                        Account
-                      </a>
+                      <Link href="/account">
+                        <a className="dropdown-item">Account</a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        className="dropdown-item"
-                        href="/api/auth/logout"
-                      >
-                        Logout
-                      </a>
+                      <Link href="/api/auth/logout">
+                        <a className="dropdown-item">Logout</a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               )}
               {!user && (
-                <a className="nav-link" href="/api/auth/login">
-                  Login
-                </a>
+                <Link href="/api/auth/login">
+                  <a className="nav-link">Login</a>
+                </Link>
               )}
             </div>
           </div>
